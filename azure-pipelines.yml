@@ -11,6 +11,10 @@ steps:
   inputs:
     scriptSource: filePath
     scriptPath: "./demo_script.py"
+- task: GitHubComment@0
+  displayName: 'Writing GitHub comment'
+  inputs:
+    gitHubConnection: MyGithubRepo
 
 - task: CmdLine@2
   inputs:
