@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -14,10 +15,10 @@ steps:
 - task: GitHubComment@0
   displayName: 'Writing GitHub comment'
   inputs:
-    gitHubConnection: MyGithubRepo
-
+    gitHubConnection: 'DevopsDemo'
+    repositoryName: '$(Build.Repository.Name)'
 - task: CmdLine@2
   inputs:
     script: |
       echo Trying to get pull request id
-      echo $(System.PullRequest.PullRequestId)
+      echo $(Build.PullRequest.PullRequestId)
