@@ -1,0 +1,23 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+pr:
+  - master
+
+steps:
+- task: PythonScript@0
+  inputs:
+    scriptSource: filePath
+    scriptPath: "./demo_script.py"
+- task: GitHubComment@0
+  displayName: 'Writing GitHub comment'
+  inputs:
+    gitHubConnection: MyGithubRepo
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Trying to get pull request id
+      echo $(System.PullRequest.PullRequestId)
