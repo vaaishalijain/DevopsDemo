@@ -17,4 +17,3 @@ steps:
     script: |
       echo Trying to get pull request id
       echo $(System.PullRequest.PullRequestId)
-      echo $(Build.PullRequest.PullRequestId)
