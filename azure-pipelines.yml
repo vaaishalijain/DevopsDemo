@@ -5,20 +5,26 @@
 # https://aka.ms/yaml
 
 pr:
-  - master
+  - main
 
 steps:
 - task: PythonScript@0
   inputs:
     scriptSource: filePath
     scriptPath: "./demo_script.py"
-- task: GitHubComment@0
-  displayName: 'Writing GitHub comment'
+- task: PowerShell@2
   inputs:
-    gitHubConnection: 'DevopsDemo'
-    repositoryName: '$(Build.Repository.Name)'
+    targetType: 'inline'
+    script: |
+      # Write your PowerShell commands here.
+      
+      Write-Host "Hello World"
+      Write-Host "$SYSTEM_PULLREQUEST_PULLREQUESTNUMBER"
+      Write-Host "SYSTEM_PULLREQUEST_PULLREQUESTNUMBER"
+      Write-Host SYSTEM_PULLREQUEST_PULLREQUESTNUMBER
 - task: CmdLine@2
   inputs:
     script: |
       echo Trying to get pull request id
+      echo $(System.PullRequest.PullRequestId)
       echo $(Build.PullRequest.PullRequestId)
