@@ -3,9 +3,13 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
-
 steps:
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'filePath'
+    scriptPath: './demo_script.py'
+    arguments: -test_data $(name) -build_dir $(name1)
+
 - task: PythonScript@0
   inputs:
     scriptSource: filePath
